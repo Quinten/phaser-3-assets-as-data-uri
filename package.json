@@ -1,0 +1,30 @@
+{
+  "name": "phaser-3-assets-as-data-uri",
+  "version": "0.0.1",
+  "description": "Demo about how to load your Phaser 3 assets as data-uri's",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --port 8008"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quinten/phaser-3-assets-as-data-uri.git"
+  },
+  "author": "Quinten Clause",
+  "license": "MIT",
+  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
+  "bugs": {
+    "url": "https://github.com/Quinten/phaser-3-assets-as-data-uri/issues"
+  },
+  "homepage": "https://github.com/Quinten/phaser-3-assets-as-data-uri#readme",
+  "devDependencies": {
+    "raw-loader": "^0.5.1",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15",
+    "webpack-dev-server": "^3.1.3"
+  },
+  "dependencies": {
+    "phaser": "^3.6.0"
+  }
+}
