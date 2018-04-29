@@ -15,10 +15,14 @@ module.exports = {
 
     module: {
         rules: [
-          {
-            test: [ /\.vert$/, /\.frag$/ ],
-            use: 'raw-loader'
-          }
+            {
+                test: [ /\.vert$/, /\.frag$/ ],
+                use: 'raw-loader'
+            },
+            {
+                test: /\.(png|mp3)$/,
+                use: [{ loader: 'url-loader'}]
+            }
         ]
     },
 
