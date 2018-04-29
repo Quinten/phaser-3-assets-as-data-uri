@@ -74,7 +74,7 @@ function create ()
     this.cache.json.add('sfx', sfxJson);
     nLoaded++;
 
-    // method for an audiosprite json file
+    // method for an audiosprite Audio Buffer
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     audioCtx.decodeAudioData(toArrayBuffer(sfxSrc), (buffer) => {
         this.cache.audio.add('sfx', buffer);
