@@ -1,0 +1,13 @@
+{
+  "resources": [
+    "assets/sfx.ogg",
+    "assets/sfx.mp3"
+  ],
+  "spritemap": {
+    "glass": {
+      "start": 1,
+      "end": 2.5,
+      "loop": false
+    }
+  }
+}

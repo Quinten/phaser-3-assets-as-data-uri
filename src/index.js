@@ -20,11 +20,13 @@ var timedEvent;
 
 function preload ()
 {
+    // original loading methods for web (with xhr requests)
     this.load.image('bg', 'assets/blue.png');
-
     this.load.spritesheet([{ file: 'assets/shards.png', key: 'shards', config: { frameWidth: 16, frameHeight: 16 } }]);
+    this.load.audioSprite('sfx', ['assets/sfx.ogg', 'assets/sfx.mp3'], 'assets/sfx.json');
 }
 
+// the rest of the code to check if everything loaded correctly
 function create ()
 {
     bg = this.add.image(256, 256, 'bg');
@@ -48,4 +50,5 @@ function create ()
 function onEvent ()
 {
     emitter.explode(8, 128 + Math.floor(Math.random() * 256), 128 + Math.floor(Math.random() * 256));
+    this.sound.playAudioSprite('sfx', 'glass');
 }
