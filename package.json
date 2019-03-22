@@ -20,13 +20,13 @@
   "homepage": "https://github.com/Quinten/phaser-3-assets-as-data-uri#readme",
   "devDependencies": {
     "raw-loader": "^0.5.1",
-    "url-loader": "^1.0.1",
-    "webpack": "^4.6.0",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "phaser": "^3.6.0",
-    "to-array-buffer": "^2.1.0"
+    "phaser": "^3.16.2",
+    "to-array-buffer": "^2.2.2"
   }
 }
