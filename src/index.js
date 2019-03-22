@@ -1,21 +1,23 @@
 import 'phaser';
 
 // import the assets as base-64 data-uri strings with url-loader (see webpack.config.js)
-import blueSrc from '../assets/blue.png'
-import shardsSrc from '../assets/shards.png'
-import sfxSrc from '../assets/sfx.mp3'
+import blueSrc from '../assets/blue.png';
+import shardsSrc from '../assets/shards.png';
+import sfxSrc from '../assets/sfx.mp3';
+import napieEightFontSrc from '../assets/napie-eight-font.png';
 
 // the json file can be loaded by webpack. url-loader doesn't apply here
-import sfxJson from '../assets/sfx.json'
+import sfxJson from '../assets/sfx.json';
 
 // this is a small helper to convert the audio (see package.json)
-import toArrayBuffer from 'to-array-buffer'
+import toArrayBuffer from 'to-array-buffer';
 
 var config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
     width: 512,
     height: 512,
+    pixelArt: true,
     scene: {
         preload: preload,
         create: create
@@ -28,6 +30,7 @@ var bg;
 var shards;
 var emitter;
 var timedEvent;
+var text;
 
 function preload ()
 {
@@ -37,6 +40,7 @@ function preload ()
     //this.load.image('bg', 'assets/blue.png');
     //this.load.spritesheet([{ file: 'assets/shards.png', key: 'shards', config: { frameWidth: 16, frameHeight: 16 } }]);
     //this.load.audioSprite('sfx', ['assets/sfx.ogg', 'assets/sfx.mp3'], 'assets/sfx.json');
+    //this.load.image('napie-eight-font', 'assets/napie-eight-font.png');
 }
 
 function create ()
@@ -50,7 +54,7 @@ function create ()
     // add our gameObjects
     // _________________________________________________
 
-    var nAssets = 4;
+    var nAssets = 5;
     var nLoaded = 0; // keep track
 
     // method for a simple image
@@ -85,6 +89,20 @@ function create ()
             actualCreate();
         }
     }, (e) => { console.log("Error with decoding audio data" + e.err); });
+
+    // method for bitmap font
+    this.textures.addBase64('napie-eight-font', napieEightFontSrc);
+    nLoaded++;
+    var fontConfig = {
+        image: 'napie-eight-font',
+        width: 8,
+        height: 8,
+        chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ .,!?#abcdefghijklmnopqrstuvwxyz@:;^%&1234567890*\'"`[]/\\~+-=<>(){}_|$',
+        charsPerRow: 16,
+        spacing: { x: 0, y: 0 }
+    };
+    this.cache.bitmapFont.add('napie-eight-font', Phaser.GameObjects.RetroFont.Parse(this, fontConfig));
+
 }
 
 // the rest of the code is to check if everything loaded correctly
@@ -106,6 +124,9 @@ function createGameObjects ()
         rotate: { min: -540, max: 540 }
     });
     timedEvent = this.time.addEvent({ delay: 1000, callback: onEvent, callbackScope: this, loop: true });
+    text = this.add.dynamicBitmapText(128, 128, 'napie-eight-font', 'explosions!!!');
+    text.setTint(0xe74c3c);
+    text.setScale(4);
 }
 
 function onEvent ()
